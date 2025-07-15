@@ -1,11 +1,8 @@
-import React from 'react'; // Assurez-vous d'importer React
-
-// Si vous avez un composant Link de React Router, importez-le ici :
-// import { Link } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Container, Row, Col } from 'react-bootstrap'; // <-- Ajouté ici
 
 export default function Accueil() {
-  // Optionnel: Stockez les catégories et les fonctionnalités dans des tableaux
-  // pour les rendre plus faciles à gérer et à modifier.
   const categories = [
     { name: 'Immobilier', icon: 'fas fa-home', link: '/categories/immobilier' },
     { name: 'Véhicules', icon: 'fas fa-car', link: '/categories/vehicules' },
@@ -42,34 +39,34 @@ export default function Accueil() {
     },
   ];
 
-  // Placeholder pour les dernières annonces (en réalité, elles viendraient d'une API)
   const latestAds = [
-    { id: 1, title: 'Appartement T3 centre ville', price: '120 000 €', category: 'Immobilier', imageUrl: 'https://via.placeholder.com/300x200?text=Appartement' },
-    { id: 2, title: 'Voiture citadine occasion', price: '8 500 €', category: 'Véhicules', imageUrl: 'https://via.placeholder.com/300x200?text=Voiture' },
-    { id: 3, title: 'Recherche développeur React', price: 'CDI', category: 'Emploi', imageUrl: 'https://via.placeholder.com/300x200?text=Dev+React' },
+    { id: 1, title: 'Appartement T3 centre ville', price: '120 000 ', category: 'Immobilier', imageUrl: 'https://via.placeholder.com/300x200?text=Appartement' },
+    { id: 2, title: 'Voiture citadine occasion', price: '8 500 ', category: 'Véhicules', imageUrl: 'https://via.placeholder.com/300x200?text=Voiture' },
+    { id: 3, title: 'Recherche développeur React', price: '', category: 'Emploi', imageUrl: 'https://via.placeholder.com/300x200?text=Dev+React' },
   ];
 
   return (
     <main className="main-content" tabIndex={-1}>
-      {/* Section d'introduction avec un arrière-plan visuel ou un carrousel */}
       <header className="hero-section">
         <div className="hero-content">
-          <h1 className="fade-in">Bienvenue sur <span className="app-name">MinimalFlux</span></h1>
+          <h1 className="fade-in">Bienvenue sur <span className="app-name">TrouveToutCm</span></h1>
           <p className="fade-in delay-1 lead-text">
             Votre plateforme de confiance pour des annonces simplifiées, rapides et efficaces.
           </p>
-          {/* Barre de recherche intégrée directement dans le hero pour un accès rapide */}
           <div className="search-bar-hero fade-in delay-2">
             <input type="text" placeholder="Que recherchez-vous aujourd'hui ?" aria-label="Recherche rapide" />
-            <button className="search-button" aria-label="Lancer la recherche"><i className="fas fa-search"></i></button>
+            <button className="search-button" aria-label="Lancer la recherche">
+              <i className="fas fa-search"></i>
+            </button>
           </div>
-          <button className="cta-button fade-in delay-3">Déposer une annonce gratuitement</button>
+          <Link to="/publier-annonce" className="cta-button fade-in delay-3">
+            Déposer une annonce gratuitement
+          </Link>
         </div>
       </header>
 
       <hr className="divider" />
 
-      {/* Section des statistiques clés pour rassurer et impressionner */}
       <section className="stats-section fade-in delay-4">
         <h2>Notre communauté en chiffres</h2>
         <div className="stats-grid">
@@ -93,51 +90,103 @@ export default function Accueil() {
 
       <hr className="divider" />
 
-      {/* Catégories populaires dynamiques avec icônes */}
-      <section className="categories-section fade-in delay-5">
-        <h2>Explorez nos catégories phares</h2>
-        <ul className="categories-grid">
-          {categories.map((category, index) => (
-            <li key={index}>
-              {/* Utiliser <Link to={category.link}> si React Router est configuré */}
-              <a href={category.link} aria-label={`Explorer les annonces ${category.name}`}>
-                <i className={`${category.icon} category-icon`}></i>
-                <span>{category.name}</span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </section>
+      {/* Section catégories avec React Bootstrap */}
+     <section
+  className="categories-section py-5 fade-in delay-5"
+  style={{
+    background: "linear-gradient(135deg, #0d6efd 0%, #6610f2 100%)",
+    color: "#fff",
+  }}
+>
+  <Container>
+    <h2 className="mb-4 text-center fw-bold">
+      🌟 Explorez nos catégories phares
+    </h2>
+    <Row className="justify-content-center">
+      {categories.map((category, index) => (
+        <Col
+          key={index}
+          xs={6}
+          sm={4}
+          md={3}
+          className="mb-4 d-flex justify-content-center"
+        >
+          <Link
+            to={category.link}
+            aria-label={`Explorer les annonces ${category.name}`}
+            className="text-center rounded p-3 d-flex flex-column align-items-center category-link"
+            style={{
+              background: "#1c1f26",
+              color: "#f8f9fa",
+              width: "100%",
+              maxWidth: "150px",
+              textDecoration: "none",
+              transition: "transform 0.3s, box-shadow 0.3s",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "scale(1.05)";
+              e.currentTarget.style.boxShadow = "0 8px 20px rgba(0,0,0,0.3)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "scale(1)";
+              e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.15)";
+            }}
+          >
+            <i
+              className={`${category.icon} mb-2`}
+              style={{ fontSize: "2.5rem", color: "#0d6efd" }}
+            ></i>
+            <div className="fw-semibold">{category.name}</div>
+          </Link>
+        </Col>
+      ))}
+    </Row>
+  </Container>
+</section>
+
 
       <hr className="divider" />
 
-      {/* Section des dernières annonces pour montrer du contenu frais */}
       <section className="latest-ads-section fade-in delay-6">
-        <h2>Les dernières annonces</h2>
-        <div className="ads-grid">
-          {latestAds.map(ad => (
-            <article key={ad.id} className="ad-card" tabIndex={0}>
-              <img src={ad.imageUrl} alt={ad.title} className="ad-image" />
-              <div className="ad-info">
-                <h3>{ad.title}</h3>
-                <p className="ad-price">{ad.price}</p>
-                <p className="ad-category">{ad.category}</p>
-                {/* <Link to={`/ad/${ad.id}`} className="view-ad-button">Voir l'annonce</Link> */}
-                <a href={`/ad/${ad.id}`} className="view-ad-button">Voir l'annonce</a>
-              </div>
-            </article>
-          ))}
+  <h2>Les dernières annonces</h2>
+  <div className="ads-grid">
+    {latestAds.map((ad) => (
+      <article key={ad.id} className="ad-card" tabIndex={0}>
+        {/* ✅ Ici tu remplaces simplement ad.imageUrl par ton import local */}
+        {ad.imageUrl && (
+          <img
+            src={ad.imageUrl}
+            alt={ad.title}
+            className="ad-image"
+            style={{ objectFit: 'cover', width: '100%', height: '200px', borderRadius: '8px' }}
+          />
+        )}
+        <div className="ad-info">
+          <h3>{ad.title}</h3>
+          <p className="ad-price">{ad.price} FCFA</p>
+          <p className="ad-category">{ad.category}</p>
+          <Link to={`/ad/${ad.id}`} className="view-ad-button">
+            Voir l'annonce
+          </Link>
         </div>
-        <div className="text-center">
-            <button className="cta-button-secondary">Voir toutes les annonces</button>
-        </div>
-      </section>
+      </article>
+    ))}
+  </div>
+  <div className="text-center mt-4">
+  <div className="text-center mt-4">
+  <Link to="/mesannonces" className="cta-button-secondary">
+    Voir toutes les annonces
+  </Link>
+</div>
+
+  </div>
+</section>
+
 
       <hr className="divider" />
 
-      {/* Section des fonctionnalités clés, enrichie avec plus de détails et d'icônes */}
       <section className="features-section fade-in delay-7">
-        <h2>Pourquoi choisir MinimalFlux ?</h2>
+        <h2>Pourquoi choisir TrouveToutCm ?</h2>
         <div className="features-grid">
           {features.map(feature => (
             <div className="card" tabIndex={0} role="group" aria-labelledby={`feature-${feature.id}`} key={feature.id}>
@@ -151,31 +200,28 @@ export default function Accueil() {
 
       <hr className="divider" />
 
-      {/* Témoignages clients pour renforcer la confiance */}
       <section className="testimonials-section fade-in delay-8">
         <h2>Ce que nos utilisateurs disent</h2>
         <div className="testimonials-carousel">
           <div className="testimonial-card">
-            <p>"MinimalFlux a rendu la vente de ma voiture si simple ! J'ai eu des contacts rapidement."</p>
+            <p>"TrouveToutCm a rendu la vente de ma voiture si simple ! J'ai eu des contacts rapidement."</p>
             <cite>- Sarah L.</cite>
           </div>
           <div className="testimonial-card">
             <p>"J'ai trouvé l'appartement de mes rêves grâce aux annonces immobilières. Interface très intuitive !"</p>
             <cite>- Marc D.</cite>
           </div>
-          {/* Ajoutez d'autres témoignages au besoin */}
         </div>
       </section>
 
       <hr className="divider" />
 
-      {/* Section d'appel à l'action finale avec plus d'options */}
       <section className="call-to-action-footer fade-in delay-9">
         <h2>Prêt à simplifier vos échanges ?</h2>
         <p>Rejoignez la communauté MinimalFlux et découvrez la facilité de publier, chercher et gérer vos annonces.</p>
         <div className="cta-buttons-group">
-          <button className="cta-button-primary">Créer un compte gratuit</button>
-          <button className="cta-button-secondary">Parcourir les annonces</button>
+          <Link to="/inscription" className="cta-button-primary">Créer un compte gratuit</Link>
+          <Link to="/annonces" className="cta-button-secondary">Parcourir les annonces</Link>
         </div>
       </section>
     </main>

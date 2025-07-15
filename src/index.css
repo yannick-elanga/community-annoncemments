@@ -1398,3 +1398,14 @@ button {
 .search-button:active {
   transform: scale(0.95);
 }
+
+
+/* Exemple : styles additionnels */
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #0069d9;
+}
