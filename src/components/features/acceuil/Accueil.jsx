@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import image1 from './assets/image1.jpg'
-import IMG2 from './assets/IMG2.jpg'
-import IMG19 from './assets/IMG19.jpg'
-import IMG20 from './assets/IMG20.jpg'
-import IMG16 from './assets/IMG16.jpg'
-import IMG17 from './assets/IMG17.jpg'
-import image2 from './assets/image2.jpg'
-import image3 from './assets/image3.jpg'
-import image4 from './assets/image4.jpg'
-import image5 from './assets/image5.jpg'
+import image1 from '/assets/image1.jpg'
+import IMG2 from '/assets/IMG2.jpg'
+import IMG19 from '/assets/IMG19.jpg'
+import IMG20 from '/assets/IMG20.jpg'
+import IMG16 from '/assets/IMG16.jpg'
+import IMG17 from '/assets/IMG17.jpg'
+import image2 from '/assets/image2.jpg'
+import image3 from '/assets/image3.jpg'
+import image4 from '/assets/image4.jpg'
+import image5 from '/assets/image5.jpg'
 
 
 import { 
@@ -43,7 +43,7 @@ import {
   faQuoteLeft
 } from '@fortawesome/free-solid-svg-icons';
 
-export default function Accueil() {
+export function Accueil() {
   const categories = [
     { name: 'Immobilier', icon: faHome, count: 24500 },
     { name: 'Véhicules', icon: faCar, count: 18700 },
@@ -192,7 +192,7 @@ export default function Accueil() {
                 <Button as={Link} to="/publier-annonce" variant="warning" size="lg">
                   Déposer une annonce gratuite
                 </Button>
-                <Button as={Link} to="/mesannonces" variant="outline-light" size="lg">
+                <Button as={Link} to="/mes-annonces" variant="outline-light" size="lg">
                   Explorer les annonces
                 </Button>
               </div>
@@ -235,7 +235,7 @@ export default function Accueil() {
           <Row>
             {categories.map((category, index) => (
               <Col lg={2} md={4} sm={6} key={index} className="mb-4">
-                <Card as={Link} to="/mesannonces" className="h-100 text-decoration-none hover-shadow">
+                <Card as={Link} to="/mes-annonces" className="h-100 text-decoration-none hover-shadow">
                   <Card.Body className="text-center">
                     <FontAwesomeIcon icon={category.icon} className="text-primary mb-3" size="3x" />
                     <h5 className="text-dark">{category.name}</h5>
@@ -253,7 +253,7 @@ export default function Accueil() {
         <Container>
           <div className="d-flex justify-content-between align-items-center mb-5">
             <h2>Les dernières annonces</h2>
-            <Button as={Link} to="/mesannonces" variant="outline-primary">
+            <Button as={Link} to="/mes-annonces" variant="outline-primary">
               Voir toutes les annonces
             </Button>
           </div>

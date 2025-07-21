@@ -5,12 +5,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faCalendarAlt, faTag, faPhone, faList, faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as regularStar } from '@fortawesome/free-regular-svg-icons';
 
-import image1 from './assets/image1.jpg';
-import IMG2 from './assets/IMG2.jpg';
-import IMG19 from './assets/IMG19.jpg';
-import IMG20 from './assets/IMG20.jpg';
+import image1 from '/assets/image1.jpg';
+import IMG2 from '/assets/IMG2.jpg';
+import IMG19 from '/assets/IMG19.jpg';
+import IMG20 from '/assets/IMG20.jpg';
 
-export default function AnnonceDetail() {
+export function AnnonceDetail() {
   const { id } = useParams();
 
   const [rating, setRating] = useState(0);
@@ -153,7 +153,7 @@ export default function AnnonceDetail() {
                   ))}
                 </div>
 
-                <Button as={Link} to="/mesannonces" variant="primary" className="mt-2">
+                <Button as={Link} to="/mes-annonces" variant="primary" className="mt-2">
                   Retour aux annonces
                 </Button>
               </Col>

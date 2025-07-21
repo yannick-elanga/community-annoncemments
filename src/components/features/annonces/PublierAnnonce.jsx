@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-export default function PublierAnnonce() {
+export function PublierAnnonce() {
   const navigate = useNavigate();
 
   // États pour les champs du formulaire

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-export default function MesAnnonces() {
+export function MesAnnonces() {
   const [annonces, setAnnonces] = useState([]);
 
   useEffect(() => {

@@ -14,7 +14,7 @@ const colors = {
   dark: "#5a5c69"
 };
 
-export default function Categories() {
+export function Categories() {
   const [categories, setCategories] = useState([]);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
-import IMG7 from './assets/IMG7.jpg';
-import IMG17 from './assets/IMG17.jpg';
-import IMG16 from './assets/IMG16.jpg';
-import IMG21 from './assets/IMG21.jpg';
-import pp from './assets/Pp.jpg';
+import IMG7 from '/assets/IMG7.jpg';
+import IMG17 from '/assets/IMG17.jpg';
+import IMG16 from '/assets/IMG16.jpg';
+import IMG21 from '/assets/IMG21.jpg';
+import pp from '/assets/Pp.jpg';
 
 // Make sure you have Bootstrap and Bootstrap Icons linked in your project.
 // For example, in public/index.html:
@@ -13,7 +13,7 @@ import pp from './assets/Pp.jpg';
 // <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 
-export default function Profil() {
+export function Profil() {
   const navigate = useNavigate();
 
   // MODIFIED: Initial categories are now global, not per user.

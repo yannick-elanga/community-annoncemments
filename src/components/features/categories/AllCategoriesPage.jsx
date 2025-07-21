@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 // Assurez-vous d'importer vos styles Bootstrap si nécessaire
 
-export default function AllCategoriesPage() {
+export function AllCategoriesPage() {
   const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
 
