@@ -10,6 +10,8 @@ import image2 from '/assets/image2.jpg'
 import image3 from '/assets/image3.jpg'
 import image4 from '/assets/image4.jpg'
 import image5 from '/assets/image5.jpg'
+import image10 from '/assets/image10.jpg'
+
 
 
 import { 
@@ -153,7 +155,7 @@ export function Accueil() {
   const partners = [
     { id: 1, name: 'Partner 1', logo: image3 },
     { id: 2, name: 'Partner 2', logo: image4 },
-    { id: 3, name: 'Partner 3', logo: 'https://via.placeholder.com/150x60?text=Partner+3' },
+    { id: 3, name: 'Partner 3', logo: image10 },
     { id: 4, name: 'Partner 4', logo: 'https://via.placeholder.com/150x60?text=Partner+4' },
     { id: 5, name: 'Partner 5', logo: 'https://via.placeholder.com/150x60?text=Partner+5' },
   ];

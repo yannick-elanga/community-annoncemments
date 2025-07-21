@@ -9,10 +9,12 @@ import image1 from '/assets/image1.jpg';
 import IMG2 from '/assets/IMG2.jpg';
 import IMG19 from '/assets/IMG19.jpg';
 import IMG20 from '/assets/IMG20.jpg';
+import IMG3 from '/assets/IMG3.jpg';
+import image9 from '/assets/image9.jpg';
+import image8 from '/assets/image8.jpg';
 
 export function AnnonceDetail() {
   const { id } = useParams();
-
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
 
@@ -22,7 +24,7 @@ export function AnnonceDetail() {
       title: 'Appartement T3 centre ville',
       price: '120 000',
       category: 'Immobilier',
-      images: [image1, image1, image1],
+      images: [image1, IMG3, image9],
       location: 'Douala, Bonanjo',
       date: 'Il y a 2 heures',
       isVerified: true,
@@ -35,7 +37,7 @@ export function AnnonceDetail() {
       title: 'Voiture citadine occasion',
       price: '8 500',
       category: 'Véhicules',
-      images: [IMG2, IMG2],
+      images: [IMG2, image8],
       location: 'Yaoundé, Bastos',
       date: 'Il y a 5 heures',
       isVerified: false,
@@ -84,7 +86,6 @@ export function AnnonceDetail() {
 
   const handleRating = (rate) => {
     setRating(rate);
-    // Tu pourras ici envoyer la note vers Firestore ou Supabase si souhaité
     console.log(`Note donnée : ${rate}`);
   };
 
@@ -92,9 +93,9 @@ export function AnnonceDetail() {
     <Container className="py-5 mt-5">
       <Row className="justify-content-center">
         <Col lg={10}>
-          <Card className="shadow-sm border-0 rounded-4 p-3">
-            <Row>
-              <Col md={6} className="mb-3 mb-md-0">
+          <Card className="shadow-sm border-0 rounded-4 p-4">
+            <Row className="align-items-start">
+              <Col md={6} className="mb-4 mb-md-0">
                 <Carousel className="rounded-4 overflow-hidden shadow">
                   {annonce.images.map((img, index) => (
                     <Carousel.Item key={index}>
@@ -108,6 +109,7 @@ export function AnnonceDetail() {
                   ))}
                 </Carousel>
               </Col>
+
               <Col md={6}>
                 <h2 className="fw-bold mb-3">{annonce.title}</h2>
                 <h4 className="text-primary fw-bold">
@@ -137,7 +139,6 @@ export function AnnonceDetail() {
                   {annonce.contact}
                 </p>
 
-                {/* Système d'étoiles */}
                 <h5 className="mt-4 fw-semibold">Notez cette annonce</h5>
                 <div className="d-flex mb-3">
                   {[1, 2, 3, 4, 5].map((star) => (
