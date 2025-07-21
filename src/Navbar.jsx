@@ -10,17 +10,9 @@ export default function Navbar() {
   const handleSearch = (e) => {
     e.preventDefault();
     if (searchQuery.trim() !== "") {
-      navigate(`/recherche?q=${encodeURIComponent(searchQuery.trim())}`);
+      navigate(`/mesannonces?search=${encodeURIComponent(searchQuery.trim())}`);
+      setSearchQuery(""); // optionnel pour vider la barre après recherche
     }
-  };
-
-  const handleLogout = () => {
-    // Supprime les infos de connexion
-    localStorage.removeItem("isAuthenticated");
-    localStorage.removeItem("currentUser"); // si tu stockes l'utilisateur
-
-    // Redirige vers la page de connexion
-    navigate("/connexion");
   };
 
   return (
@@ -38,7 +30,7 @@ export default function Navbar() {
           </Link>
 
           {/* Barre de recherche fonctionnelle */}
-          <form onSubmit={handleSearch} className="d-flex">
+          <form onSubmit={handleSearch} className="d-flex ms-auto">
             <input
               type="text"
               placeholder="Rechercher une annonce..."
@@ -63,21 +55,15 @@ export default function Navbar() {
             <Link to="/publier-annonce">➕ Publier une annonce</Link>
             <Link to="/categories">📚 Catégories</Link>
             <Link to="/communaute">👥 Communauté</Link>
-            <Link to="/mes-annonces">🔍 Voir mes annonces</Link>
+            <Link to="/mesannonces">🔍 Voir mes annonces</Link>
+            <Link to="/categories-publiques">🔍 Catégories publiques</Link>
           </div>
         </div>
 
         <Link to="/profil">👤 Profil utilisateur</Link>
-        <Link to="/connexion">🔐 Connexion</Link>
-
-        <button
-          className="btn btn-outline-danger btn-sm ms-2"
-          onClick={handleLogout}
-        >
-          🚪 Déconnexion
-        </button>
+        <Link to="/services">🛠️ Services</Link>
+         
       </nav>
     </>
   );
 }
-

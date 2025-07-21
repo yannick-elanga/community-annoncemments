@@ -1,8 +1,6 @@
-// AjouterAnnonce.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-// Ajouter la prop "onAnnonceAjoutee" (la fonction de rappel)
 export default function AjouterAnnonce({ onAnnonceAjoutee }) {
   const [titre, setTitre] = useState('');
   const [description, setDescription] = useState('');
@@ -12,18 +10,33 @@ export default function AjouterAnnonce({ onAnnonceAjoutee }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Créer un objet annonce (adaptez les champs à votre formulaire)
-    const nouvelleAnnonce = { titre, description, prix };
 
-    // Appeler la fonction de rappel (remonte les données à Accueil)
-    onAnnonceAjoutee(nouvelleAnnonce);
+    // Créer un id simple (timestamp)
+    const id = Date.now();
 
-    // Réinitialiser le formulaire (optionnel)
+    // Nouvelle annonce complète
+    const nouvelleAnnonce = { id, titre, description, prix, imageUrl: "https://via.placeholder.com/300" };
+
+    // Récupérer les anciennes annonces depuis localStorage
+    const anciennesAnnonces = JSON.parse(localStorage.getItem("annonces")) || [];
+
+    // Ajouter la nouvelle annonce au tableau
+    const misesAJour = [...anciennesAnnonces, nouvelleAnnonce];
+
+    // Enregistrer dans localStorage
+    localStorage.setItem("annonces", JSON.stringify(misesAJour));
+
+    // Optionnel : appeler la fonction de rappel
+    if (onAnnonceAjoutee) {
+      onAnnonceAjoutee(nouvelleAnnonce);
+    }
+
+    // Réinitialiser le formulaire
     setTitre('');
     setDescription('');
     setPrix('');
 
-    // Rediriger ou afficher un message (comme avant)
+    // Redirection
     navigate('/confirmation-annonce');
   };
 
@@ -36,22 +49,46 @@ export default function AjouterAnnonce({ onAnnonceAjoutee }) {
         <form onSubmit={handleSubmit} className="ad-form">
           <div className="form-group">
             <label htmlFor="title">Titre de l'annonce</label>
-            <input type="text" id="title" name="title" required maxLength="100" value={titre} onChange={(e) => setTitre(e.target.value)} />
+            <input
+              type="text"
+              id="title"
+              name="title"
+              required
+              maxLength="100"
+              value={titre}
+              onChange={(e) => setTitre(e.target.value)}
+            />
           </div>
 
           <div className="form-group">
             <label htmlFor="description">Description</label>
-            <textarea id="description" name="description" rows="5" required maxLength="1000" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+            <textarea
+              id="description"
+              name="description"
+              rows="5"
+              required
+              maxLength="1000"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            ></textarea>
           </div>
 
           <div className="form-group">
             <label htmlFor="price">Prix (€)</label>
-            <input type="number" id="price" name="price" min="0" step="0.01" value={prix} onChange={(e) => setPrix(e.target.value)} />
+            <input
+              type="number"
+              id="price"
+              name="price"
+              min="0"
+              step="0.01"
+              value={prix}
+              onChange={(e) => setPrix(e.target.value)}
+            />
           </div>
 
-          {/* ... (vos autres champs de formulaire) ... */}
-
-          <button type="submit" className="cta-button-primary">Publier l'annonce</button>
+          <button type="submit" className="cta-button-primary">
+            Publier l'annonce
+          </button>
         </form>
       </section>
     </main>

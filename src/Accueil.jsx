@@ -1,15 +1,56 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Row, Col } from 'react-bootstrap'; // <-- Ajouté ici
+import image1 from './assets/image1.jpg'
+import IMG2 from './assets/IMG2.jpg'
+import IMG19 from './assets/IMG19.jpg'
+import IMG20 from './assets/IMG20.jpg'
+import IMG16 from './assets/IMG16.jpg'
+import IMG17 from './assets/IMG17.jpg'
+import image2 from './assets/image2.jpg'
+import image3 from './assets/image3.jpg'
+import image4 from './assets/image4.jpg'
+import image5 from './assets/image5.jpg'
+
+
+import { 
+  Container, 
+  Row, 
+  Col, 
+  Card, 
+  Carousel, 
+  Button, 
+  Badge,
+  ListGroup,
+  InputGroup,
+  FormControl
+} from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { 
+  faHome, 
+  faCar, 
+  faBriefcase, 
+  faHandshake, 
+  faMobileAlt, 
+  faGamepad,
+  faSearch,
+  faBullhorn,
+  faEdit,
+  faUsers,
+  faExchangeAlt,
+  faBullseye,
+  faUserFriends,
+  faStar,
+  faQuoteLeft
+} from '@fortawesome/free-solid-svg-icons';
 
 export default function Accueil() {
   const categories = [
-    { name: 'Immobilier', icon: 'fas fa-home', link: '/categories/immobilier' },
-    { name: 'Véhicules', icon: 'fas fa-car', link: '/categories/vehicules' },
-    { name: 'Emploi', icon: 'fas fa-briefcase', link: '/categories/emploi' },
-    { name: 'Services', icon: 'fas fa-handshake', link: '/categories/services' },
-    { name: 'Multimédia', icon: 'fas fa-mobile-alt', link: '/categories/multimedia' },
-    { name: 'Loisirs', icon: 'fas fa-gamepad', link: '/categories/loisirs' },
+    { name: 'Immobilier', icon: faHome, count: 24500 },
+    { name: 'Véhicules', icon: faCar, count: 18700 },
+    { name: 'Emploi', icon: faBriefcase, count: 12300 },
+    { name: 'Services', icon: faHandshake, count: 9800 },
+    { name: 'Multimédia', icon: faMobileAlt, count: 15600 },
+    { name: 'Loisirs', icon: faGamepad, count: 8700 },
   ];
 
   const features = [
@@ -17,212 +58,322 @@ export default function Accueil() {
       id: 'publish',
       title: 'Publiez vos annonces facilement',
       description: 'Ajoutez rapidement des annonces pour vendre ou chercher ce dont vous avez besoin.',
-      icon: 'fas fa-bullhorn',
+      icon: faBullhorn,
     },
     {
       id: 'manage',
       title: 'Gérez vos annonces',
       description: 'Modifiez, supprimez ou consultez vos annonces en toute simplicité.',
-      icon: 'fas fa-edit',
+      icon: faEdit,
     },
     {
       id: 'community',
       title: 'Communauté active',
       description: 'Participez aux discussions et retrouvez des offres exclusives.',
-      icon: 'fas fa-users',
+      icon: faUsers,
     },
     {
       id: 'search',
       title: 'Trouvez l\'annonce parfaite',
       description: 'Utilisez nos filtres avancés pour dénicher exactement ce que vous cherchez.',
-      icon: 'fas fa-search',
+      icon: faSearch,
     },
   ];
 
   const latestAds = [
-    { id: 1, title: 'Appartement T3 centre ville', price: '120 000 ', category: 'Immobilier', imageUrl: 'https://via.placeholder.com/300x200?text=Appartement' },
-    { id: 2, title: 'Voiture citadine occasion', price: '8 500 ', category: 'Véhicules', imageUrl: 'https://via.placeholder.com/300x200?text=Voiture' },
-    { id: 3, title: 'Recherche développeur React', price: '', category: 'Emploi', imageUrl: 'https://via.placeholder.com/300x200?text=Dev+React' },
+    { 
+      id: 1, 
+      title: 'Appartement T3 centre ville', 
+      price: '120 000', 
+      category: 'Immobilier', 
+      imageUrl: image1,
+      location: 'Douala, Bonanjo',
+      date: 'Il y a 2 heures',
+      isVerified: true
+    },
+    { 
+      id: 2, 
+      title: 'Voiture citadine occasion', 
+      price: '8 500', 
+      category: 'Véhicules', 
+      imageUrl: IMG2,
+      location: 'Yaoundé, Bastos',
+      date: 'Il y a 5 heures',
+      isVerified: false
+    },
+    { 
+      id: 3, 
+      title: 'Recherche développeur React', 
+      price: 'Salaire compétitif', 
+      category: 'Emploi', 
+      imageUrl: IMG19,
+      location: 'Remote',
+      date: 'Il y a 1 jour',
+      isVerified: true
+    },
+    { 
+      id: 4, 
+      title: 'iPhone 13 Pro Max - Neuf', 
+      price: '450 000', 
+      category: 'Multimédia', 
+      imageUrl: IMG20,
+      location: 'Bafoussam',
+      date: 'Il y a 3 jours',
+      isVerified: true
+    },
+  ];
+
+  const testimonials = [
+    {
+      id: 1,
+      quote: "TrouveToutCm a rendu la vente de ma voiture si simple ! J'ai eu des contacts rapidement.",
+      author: "Sarah L.",
+      role: "Vendeuse particulière",
+      image: IMG16,
+      rating: 5
+    },
+    {
+      id: 2,
+      quote: "J'ai trouvé l'appartement de mes rêves grâce aux annonces immobilières. Interface très intuitive !",
+      author: "Marc D.",
+      role: "Acheteur immobilier",
+      image: IMG17,
+      rating: 4
+    },
+    {
+      id: 3,
+      quote: "En tant que recruteur, cette plateforme m'a permis de trouver des talents qualifiés rapidement.",
+      author: "Aïssa T.",
+      role: "Responsable RH",
+      image: image2,
+      rating: 5
+    }
+  ];
+
+  const partners = [
+    { id: 1, name: 'Partner 1', logo: image3 },
+    { id: 2, name: 'Partner 2', logo: image4 },
+    { id: 3, name: 'Partner 3', logo: 'https://via.placeholder.com/150x60?text=Partner+3' },
+    { id: 4, name: 'Partner 4', logo: 'https://via.placeholder.com/150x60?text=Partner+4' },
+    { id: 5, name: 'Partner 5', logo: 'https://via.placeholder.com/150x60?text=Partner+5' },
+  ];
+
+  const stats = [
+    { value: '150 000+', label: 'Annonces actives', icon: faBullseye },
+    { value: '50 000+', label: 'Membres inscrits', icon: faUserFriends },
+    { value: '10 000+', label: 'Transactions par mois', icon: faExchangeAlt },
+    { value: '95%', label: 'Satisfaction clients', icon: faStar }
   ];
 
   return (
-    <main className="main-content" tabIndex={-1}>
-      <header className="hero-section">
-        <div className="hero-content">
-          <h1 className="fade-in">Bienvenue sur <span className="app-name">TrouveToutCm</span></h1>
-          <p className="fade-in delay-1 lead-text">
-            Votre plateforme de confiance pour des annonces simplifiées, rapides et efficaces.
-          </p>
-          <div className="search-bar-hero fade-in delay-2">
-            <input type="text" placeholder="Que recherchez-vous aujourd'hui ?" aria-label="Recherche rapide" />
-            <button className="search-button" aria-label="Lancer la recherche">
-              <i className="fas fa-search"></i>
-            </button>
-          </div>
-          <Link to="/publier-annonce" className="cta-button fade-in delay-3">
-            Déposer une annonce gratuitement
-          </Link>
-        </div>
-      </header>
-
-      <hr className="divider" />
-
-      <section className="stats-section fade-in delay-4">
-        <h2>Notre communauté en chiffres</h2>
-        <div className="stats-grid">
-          <div className="stat-item">
-            <i className="fas fa-bullseye stat-icon"></i>
-            <span className="stat-number">150 000+</span>
-            <p className="stat-label">Annonces actives</p>
-          </div>
-          <div className="stat-item">
-            <i className="fas fa-user-friends stat-icon"></i>
-            <span className="stat-number">50 000+</span>
-            <p className="stat-label">Membres inscrits</p>
-          </div>
-          <div className="stat-item">
-            <i className="fas fa-exchange-alt stat-icon"></i>
-            <span className="stat-number">10 000+</span>
-            <p className="stat-label">Transactions par mois</p>
-          </div>
-        </div>
+    <main className="main-content">
+      {/* Hero Section */}
+      <section className="hero-section bg-primary text-white py-5">
+        <Container>
+          <Row className="align-items-center">
+            <Col lg={6} className="mb-4 mb-lg-0">
+              <h1 className="display-4 fw-bold mb-3">Bienvenue sur <span className="text-warning">TrouveToutCm</span></h1>
+              <p className="lead mb-4">
+                Votre plateforme de confiance pour des annonces simplifiées, rapides et efficaces au Cameroun.
+              </p>
+              
+              <InputGroup className="mb-3">
+                <FormControl 
+                  placeholder="Que recherchez-vous aujourd'hui ?" 
+                  aria-label="Recherche rapide"
+                />
+                <Button variant="warning">
+                  <FontAwesomeIcon icon={faSearch} className="me-2" />
+                  Rechercher
+                </Button>
+              </InputGroup>
+              
+              <div className="d-flex flex-wrap gap-2">
+                <Button as={Link} to="/publier-annonce" variant="warning" size="lg">
+                  Déposer une annonce gratuite
+                </Button>
+                <Button as={Link} to="/mesannonces" variant="outline-light" size="lg">
+                  Explorer les annonces
+                </Button>
+              </div>
+            </Col>
+            <Col lg={6}>
+              <img 
+                src= {image5} 
+                alt="Plateforme d'annonces" 
+                className="img-fluid rounded shadow"
+              />
+            </Col>
+          </Row>
+        </Container>
       </section>
 
-      <hr className="divider" />
-
-      {/* Section catégories avec React Bootstrap */}
-     <section
-  className="categories-section py-5 fade-in delay-5"
-  style={{
-    background: "linear-gradient(135deg, #0d6efd 0%, #6610f2 100%)",
-    color: "#fff",
-  }}
->
-  <Container>
-    <h2 className="mb-4 text-center fw-bold">
-      🌟 Explorez nos catégories phares
-    </h2>
-    <Row className="justify-content-center">
-      {categories.map((category, index) => (
-        <Col
-          key={index}
-          xs={6}
-          sm={4}
-          md={3}
-          className="mb-4 d-flex justify-content-center"
-        >
-          <Link
-            to={category.link}
-            aria-label={`Explorer les annonces ${category.name}`}
-            className="text-center rounded p-3 d-flex flex-column align-items-center category-link"
-            style={{
-              background: "#1c1f26",
-              color: "#f8f9fa",
-              width: "100%",
-              maxWidth: "150px",
-              textDecoration: "none",
-              transition: "transform 0.3s, box-shadow 0.3s",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "scale(1.05)";
-              e.currentTarget.style.boxShadow = "0 8px 20px rgba(0,0,0,0.3)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "scale(1)";
-              e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.15)";
-            }}
-          >
-            <i
-              className={`${category.icon} mb-2`}
-              style={{ fontSize: "2.5rem", color: "#0d6efd" }}
-            ></i>
-            <div className="fw-semibold">{category.name}</div>
-          </Link>
-        </Col>
-      ))}
-    </Row>
-  </Container>
-</section>
-
-
-      <hr className="divider" />
-
-      <section className="latest-ads-section fade-in delay-6">
-  <h2>Les dernières annonces</h2>
-  <div className="ads-grid">
-    {latestAds.map((ad) => (
-      <article key={ad.id} className="ad-card" tabIndex={0}>
-        {/* ✅ Ici tu remplaces simplement ad.imageUrl par ton import local */}
-        {ad.imageUrl && (
-          <img
-            src={ad.imageUrl}
-            alt={ad.title}
-            className="ad-image"
-            style={{ objectFit: 'cover', width: '100%', height: '200px', borderRadius: '8px' }}
-          />
-        )}
-        <div className="ad-info">
-          <h3>{ad.title}</h3>
-          <p className="ad-price">{ad.price} FCFA</p>
-          <p className="ad-category">{ad.category}</p>
-          <Link to={`/ad/${ad.id}`} className="view-ad-button">
-            Voir l'annonce
-          </Link>
-        </div>
-      </article>
-    ))}
-  </div>
-  <div className="text-center mt-4">
-  <div className="text-center mt-4">
-  <Link to="/mesannonces" className="cta-button-secondary">
-    Voir toutes les annonces
-  </Link>
-</div>
-
-  </div>
-</section>
-
-
-      <hr className="divider" />
-
-      <section className="features-section fade-in delay-7">
-        <h2>Pourquoi choisir TrouveToutCm ?</h2>
-        <div className="features-grid">
-          {features.map(feature => (
-            <div className="card" tabIndex={0} role="group" aria-labelledby={`feature-${feature.id}`} key={feature.id}>
-              <i className={`${feature.icon} feature-icon`}></i>
-              <h3 id={`feature-${feature.id}`}>{feature.title}</h3>
-              <p>{feature.description}</p>
-            </div>
-          ))}
-        </div>
+      {/* Stats Section */}
+      <section className="py-5 bg-light">
+        <Container>
+          <h2 className="text-center mb-5">Notre communauté en chiffres</h2>
+          <Row>
+            {stats.map((stat, index) => (
+              <Col md={3} sm={6} key={index} className="mb-4 mb-md-0">
+                <Card className="border-0 text-center h-100 bg-transparent">
+                  <Card.Body>
+                    <FontAwesomeIcon icon={stat.icon} className="text-primary mb-3" size="3x" />
+                    <h3 className="fw-bold">{stat.value}</h3>
+                    <p className="text-muted">{stat.label}</p>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        </Container>
       </section>
 
-      <hr className="divider" />
-
-      <section className="testimonials-section fade-in delay-8">
-        <h2>Ce que nos utilisateurs disent</h2>
-        <div className="testimonials-carousel">
-          <div className="testimonial-card">
-            <p>"TrouveToutCm a rendu la vente de ma voiture si simple ! J'ai eu des contacts rapidement."</p>
-            <cite>- Sarah L.</cite>
-          </div>
-          <div className="testimonial-card">
-            <p>"J'ai trouvé l'appartement de mes rêves grâce aux annonces immobilières. Interface très intuitive !"</p>
-            <cite>- Marc D.</cite>
-          </div>
-        </div>
+      {/* Categories Section */}
+      <section className="py-5" style={{ background: "linear-gradient(135deg, #0d6efd 0%, #6610f2 100%)" }}>
+        <Container>
+          <h2 className="text-center text-white mb-5">Explorez nos catégories phares</h2>
+          <Row>
+            {categories.map((category, index) => (
+              <Col lg={2} md={4} sm={6} key={index} className="mb-4">
+                <Card as={Link} to="/mesannonces" className="h-100 text-decoration-none hover-shadow">
+                  <Card.Body className="text-center">
+                    <FontAwesomeIcon icon={category.icon} className="text-primary mb-3" size="3x" />
+                    <h5 className="text-dark">{category.name}</h5>
+                    <Badge bg="secondary" pill>{category.count.toLocaleString()} annonces</Badge>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        </Container>
       </section>
 
-      <hr className="divider" />
+      {/* Latest Ads Section */}
+      <section className="py-5">
+        <Container>
+          <div className="d-flex justify-content-between align-items-center mb-5">
+            <h2>Les dernières annonces</h2>
+            <Button as={Link} to="/mesannonces" variant="outline-primary">
+              Voir toutes les annonces
+            </Button>
+          </div>
+          
+          <Row>
+            {latestAds.map((ad) => (
+              <Col lg={3} md={6} key={ad.id} className="mb-4">
+                <Card className="h-100 hover-shadow">
+                  <div style={{ height: '200px', overflow: 'hidden' }}>
+                    <Card.Img variant="top" src={ad.imageUrl} alt={ad.title} style={{ objectFit: 'cover', height: '100%' }} />
+                  </div>
+                  <Card.Body>
+                    <div className="d-flex justify-content-between align-items-start">
+                      <Card.Title>{ad.title}</Card.Title>
+                      {ad.isVerified && <Badge bg="success">Vérifié</Badge>}
+                    </div>
+                    <Card.Text className="text-muted small mb-2">
+                      <FontAwesomeIcon icon={faHome} className="me-1" /> {ad.location}
+                    </Card.Text>
+                    <Card.Text className="fw-bold text-primary h5 mb-3">
+                      {ad.price} {ad.price !== 'Salaire compétitif' && 'FCFA'}
+                    </Card.Text>
+                    <div className="d-flex justify-content-between align-items-center">
+                      <Badge bg="light" text="dark">{ad.category}</Badge>
+                      <span className="text-muted small">{ad.date}</span>
+                    </div>
+                  </Card.Body>
+                  <Card.Footer className="bg-transparent border-top-0">
+                    <Button as={Link} to={`/annonce/${ad.id}`} variant="outline-primary" size="sm" className="w-100">
+                      Voir les détails
+                    </Button>
+                  </Card.Footer>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      </section>
 
-      <section className="call-to-action-footer fade-in delay-9">
-        <h2>Prêt à simplifier vos échanges ?</h2>
-        <p>Rejoignez la communauté MinimalFlux et découvrez la facilité de publier, chercher et gérer vos annonces.</p>
-        <div className="cta-buttons-group">
-          <Link to="/inscription" className="cta-button-primary">Créer un compte gratuit</Link>
-          <Link to="/annonces" className="cta-button-secondary">Parcourir les annonces</Link>
-        </div>
+      {/* Features Section */}
+      <section className="py-5 bg-light">
+        <Container>
+          <h2 className="text-center mb-5">Pourquoi choisir TrouveToutCm ?</h2>
+          <Row>
+            {features.map(feature => (
+              <Col lg={3} md={6} key={feature.id} className="mb-4">
+                <Card className="h-100 border-0 bg-white shadow-sm">
+                  <Card.Body className="text-center p-4">
+                    <div className="icon-square bg-primary bg-opacity-10 text-primary rounded-circle mb-4 mx-auto" style={{ width: '80px', height: '80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <FontAwesomeIcon icon={feature.icon} size="2x" />
+                    </div>
+                    <Card.Title>{feature.title}</Card.Title>
+                    <Card.Text>{feature.description}</Card.Text>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-5">
+        <Container>
+          <h2 className="text-center mb-5">Ce que disent nos utilisateurs</h2>
+          <Carousel variant="dark" indicators={false} interval={5000}>
+            {testimonials.map(testimonial => (
+              <Carousel.Item key={testimonial.id}>
+                <Row className="justify-content-center text-center">
+                  <Col md={8}>
+                    <blockquote className="blockquote">
+                      <p className="mb-4 fst-italic">
+                        <FontAwesomeIcon icon={faQuoteLeft} className="me-2 text-primary" />
+                        {testimonial.quote}
+                      </p>
+                      <footer className="blockquote-footer d-flex align-items-center justify-content-center gap-3">
+                        <img 
+                          src={testimonial.image} 
+                          alt={testimonial.author} 
+                          className="rounded-circle" 
+                          width={60} 
+                          height={60} 
+                          style={{ objectFit: 'cover' }}
+                        />
+                        <div>
+                          <cite title={testimonial.author} className="fw-bold">{testimonial.author}</cite>
+                          <br />
+                          <small className="text-muted">{testimonial.role}</small>
+                          <div className="mt-1 text-warning">
+                            {[...Array(testimonial.rating)].map((_, i) => (
+                              <FontAwesomeIcon icon={faStar} key={i} />
+                            ))}
+                          </div>
+                        </div>
+                      </footer>
+                    </blockquote>
+                  </Col>
+                </Row>
+              </Carousel.Item>
+            ))}
+          </Carousel>
+        </Container>
+      </section>
+
+      {/* Partners Section */}
+      <section className="py-5 bg-light">
+        <Container>
+          <h2 className="text-center mb-5">Nos partenaires</h2>
+          <Row className="justify-content-center align-items-center gy-4">
+            {partners.map(partner => (
+              <Col key={partner.id} xs={6} sm={4} md={2} className="d-flex justify-content-center">
+                <img 
+                  src={partner.logo} 
+                  alt={partner.name} 
+                  style={{ maxHeight: '60px', objectFit: 'contain' }} 
+                />
+              </Col>
+            ))}
+          </Row>
+        </Container>
       </section>
     </main>
   );

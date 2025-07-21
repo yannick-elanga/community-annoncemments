@@ -1,72 +1,63 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function MesAnnonces() {
   const [annonces, setAnnonces] = useState([]);
 
   useEffect(() => {
-    const savedAnnonces = JSON.parse(localStorage.getItem("annonces")) || [];
-    setAnnonces(savedAnnonces);
+    const stored = localStorage.getItem("annonces");
+    if (stored) {
+      setAnnonces(JSON.parse(stored));
+    }
   }, []);
 
   const supprimerAnnonce = (id) => {
-    if (window.confirm("Confirmer la suppression de cette annonce ?")) {
-      const nouvellesAnnonces = annonces.filter((a) => a.id !== id);
-      setAnnonces(nouvellesAnnonces);
-      localStorage.setItem("annonces", JSON.stringify(nouvellesAnnonces));
+    if (window.confirm("Confirmer la suppression ?")) {
+      const newAnnonces = annonces.filter((a) => a.id !== id);
+      setAnnonces(newAnnonces);
+      localStorage.setItem("annonces", JSON.stringify(newAnnonces));
     }
   };
 
   return (
-    <div className="container main-content">
-      <h2 className="mb-4 text-center">📢 Mes Annonces</h2>
+    <div className="container py-5">
+      <h2 className="mb-4">Mes Annonces</h2>
 
       {annonces.length === 0 ? (
-        <p className="text-center">Vous n'avez pas encore publié d'annonces.</p>
+        <p>Aucune annonce trouvée.</p>
       ) : (
         <div className="row">
-          {annonces.map((annonce) => (
-            <div className="col-md-4 mb-4" key={annonce.id}>
-              <div className="card h-100 shadow-sm">
+          {annonces.map(({ id, titre, prix, description, imageUrl }) => (
+            <div key={id} className="col-md-4 mb-4">
+              <div className="card h-100">
                 <img
-                  src={annonce.imageUrl}
+                  src={
+                    imageUrl ||
+                    "https://via.placeholder.com/300x200?text=Pas+d'image"
+                  }
+                  alt={titre}
                   className="card-img-top"
-                  alt={annonce.titre}
                   style={{ height: "200px", objectFit: "cover" }}
                 />
                 <div className="card-body d-flex flex-column">
-                  <h5 className="card-title">{annonce.titre}</h5>
-                  <p className="card-text">Prix: {annonce.prix}</p>
-                  {annonce.description && (
-                    <p className="card-text">{annonce.description}</p>
+                  <h5 className="card-title">{titre}</h5>
+                  <p className="text-primary fw-bold">{prix || "Prix non précisé"}</p>
+                  {description && (
+                    <p className="text-truncate" style={{ maxHeight: "3em", overflow: "hidden" }}>
+                      {description}
+                    </p>
                   )}
-                  <div className="mt-auto">
-                    <Link
-                      to={`/modifier-annonce/${annonce.id}`}
-                      className="btn btn-primary btn-sm me-2"
-                    >
-                      Modifier
-                    </Link>
-                    <button
-                      className="btn btn-danger btn-sm"
-                      onClick={() => supprimerAnnonce(annonce.id)}
-                    >
-                      Supprimer
-                    </button>
-                  </div>
+                  <button
+                    onClick={() => supprimerAnnonce(id)}
+                    className="btn btn-danger mt-auto"
+                  >
+                    Supprimer
+                  </button>
                 </div>
               </div>
             </div>
           ))}
         </div>
       )}
-
-      <div className="text-center mt-4">
-        <Link to="/publier-annonce" className="btn btn-success">
-          ➕ Publier une nouvelle annonce
-        </Link>
-      </div>
     </div>
   );
 }

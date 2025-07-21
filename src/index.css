@@ -1409,3 +1409,37 @@ button {
 .btn-primary:hover {
   background-color: #0069d9;
 }
+
+/* Style pour le footer */
+.hover-primary {
+  transition: color 0.3s ease;
+}
+
+.hover-primary:hover {
+  color: var(--bs-primary) !important;
+}
+
+.social-icons a {
+  transition: transform 0.3s ease, color 0.3s ease;
+  display: inline-block;
+}
+
+.social-icons a:hover {
+  color: var(--bs-primary) !important;
+  transform: translateY(-3px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  footer {
+    text-align: center;
+  }
+  
+  .social-icons {
+    justify-content: center;
+  }
+  
+  .list-unstyled li {
+    justify-content: center;
+  }
+}
