@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function ConfirmationAnnonce() {
+export function ConfirmationAnnonce() {
   return (
     <main className="main-content" tabIndex={-1} style={{ marginTop: '112px', padding: '2rem', textAlign: 'center' }}>
       <div className="confirmation-container">

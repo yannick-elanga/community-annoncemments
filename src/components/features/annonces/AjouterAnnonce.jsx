@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function AjouterAnnonce({ onAnnonceAjoutee }) {
+export function AjouterAnnonce({ onAnnonceAjoutee }) {
   const [titre, setTitre] = useState('');
   const [description, setDescription] = useState('');
   const [prix, setPrix] = useState('');

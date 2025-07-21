@@ -1,43 +1,47 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./Navbar";
-import Accueil from "./Accueil";
-import Profil from "./Profil";
-
-import ConfirmationAnnonce from './ConfirmationAnnonce';
-import AjouterAnnonce from './AjouterAnnonce';
-import PublierAnnonce from "./PublierAnnonce";
-import MesAnnonces from "./MesAnnonces";
-import Categories from "./Categories";
-import CategorieDetails from "./CategorieDetails";
-import Communaute from "./Communaute";
-import Footer from "./Footer";
-import AllCategoriesPage from './AllCategoriesPage'; // Le nouveau composant
-import Services from './Services';
-import AnnonceDetail from './AnnonceDetail';
+import { Route } from "react-router-dom";
+import { RootLayout } from "./components/layouts/root-layout";
+import { Accueil, AjouterAnnonce, CategorieDetails, Categories, Communaute, ConfirmationAnnonce, Connexion, MesAnnonces, Profil, PublierAnnonce } from "./components/features";
 
 
 export default function App() {
+  const routes = [
+    { path: "/", element: <Accueil/> },
+    { path: "/profil", element: <Profil /> },
+    {
+      path: "/ajouter-annonce",
+      element: <AjouterAnnonce />,
+    },
+    {
+      path: "/confirmation-annonce",
+      element: <ConfirmationAnnonce />,
+    },
+    {
+      path: "/connexion",
+      element: <Connexion />,
+    },
+    {
+      path: "/publier-annonce",
+      element: <PublierAnnonce />,
+    },
+    { path: "/mes-annonces", element: <MesAnnonces /> },
+    {
+      path: "/categories",
+      element: <Categories />,
+    },
+    {
+      path: "/categories/:id",
+      element: <CategorieDetails />,
+    },
+    {
+      path: "/communaute",
+      element: <Communaute />,
+    },
+  ];
   return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Accueil />} />
-        <Route path="/profil" element={<Profil />} />
-        <Route path="/ajouter-annonce" element={<AjouterAnnonce />} />
-        <Route path="/confirmation-annonce" element={<ConfirmationAnnonce />} />
-      
-        <Route path="/publier-annonce" element={<PublierAnnonce />} />
-        <Route path="/mes-annonces" element={<MesAnnonces />} />
-        <Route path="/categories" element={<Categories />} />
-        <Route path="/categories/:id" element={<CategorieDetails />} />
-        <Route path="/communaute" element={<Communaute />} />
-         <Route path="/categories-publiques" element={<AllCategoriesPage />} /> {/* NOUVELLE ROUTE */}
-           <Route path="/services" element={<Services />} />
-           <Route path="/annonce/:id" element={<AnnonceDetail />} />
-        
-        {/* Ajoute tes autres routes ici */}
-      </Routes>
-      <Footer /> {/* ✅ Déplacé en dehors de <Routes> */}
-    </Router>
+    <RootLayout>
+      {routes.map(e => (
+        <Route path={e.path} element={e.element} />
+      ))}
+    </RootLayout>
   );
 }

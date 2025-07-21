@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function FormulaireAnnonce() {
+export function FormulaireAnnonce() {
   return (
     <>
       <header><h2>Envoyer votre annonce</h2></header>

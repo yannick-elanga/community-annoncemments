@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-export default function CategorieDetails() {
+export function CategorieDetails() {
   const { id } = useParams();
   const [categorie, setCategorie] = useState(null);
 

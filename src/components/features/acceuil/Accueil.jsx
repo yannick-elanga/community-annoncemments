@@ -43,7 +43,7 @@ import {
   faQuoteLeft
 } from '@fortawesome/free-solid-svg-icons';
 
-export default function Accueil() {
+export function Accueil() {
   const categories = [
     { name: 'Immobilier', icon: faHome, count: 24500 },
     { name: 'Véhicules', icon: faCar, count: 18700 },
