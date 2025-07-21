@@ -27,7 +27,7 @@ import {
   faStar // Another icon for testimonials if needed
 } from '@fortawesome/free-solid-svg-icons';
 
-export default function Communaute() {
+export function Communaute() {
   // Data for Upcoming Events (Future actions)
   const upcomingEvents = [
     { id: 1, title: "Webinar: Sécuriser vos transactions en ligne", date: "15 Juin 2025", type: "En ligne", link: "/evenement/1", attendees: "M. Jean Dupont (Expert en cybersécurité)" },

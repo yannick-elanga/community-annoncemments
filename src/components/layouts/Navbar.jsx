@@ -18,7 +18,7 @@ export function Navbar() {
       {/* Header */}
       <header className="site-header">
         <div className="header-left">
-          <img src='assets/logo.png' alt="logo" className="logo" />
+          <img src='assets/logo.jpg' alt="logo" className="logo" />
           <h1>TrouveToutCm</h1>
         </div>
 
@@ -53,7 +53,7 @@ export function Navbar() {
             <Link to="/publier-annonce">➕ Publier une annonce</Link>
             <Link to="/categories">📚 Catégories</Link>
             <Link to="/communaute">👥 Communauté</Link>
-            <Link to="/mesannonces">🔍 Voir mes annonces</Link>
+            <Link to="/mes-annonces">🔍 Voir mes annonces</Link>
             <Link to="/categories-publiques">🔍 Catégories publiques</Link>
           </div>
         </div>

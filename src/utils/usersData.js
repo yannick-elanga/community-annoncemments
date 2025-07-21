@@ -1,6 +1,6 @@
 // src/usersData.js
-import IMG17 from './assets/IMG17.jpg';
-import IMG16 from './assets/IMG16.jpg';
+import IMG17 from "/assets/IMG17.jpg";
+import IMG16 from "/assets/IMG16.jpg";
 
 export const initialUsers = [
   {

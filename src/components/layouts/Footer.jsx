@@ -12,7 +12,7 @@ import {
   FaClock
 } from "react-icons/fa";
 
-export default function Footer() {
+export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -23,7 +23,7 @@ export default function Footer() {
           <div className="col-lg-4 col-md-6">
             <div className="d-flex align-items-center mb-3">
               <img 
-                src="/logo-light.png" 
+                src="/logo-light.jpg" 
                 alt="TrouveToutCm Logo" 
                 width="40" 
                 height="40"

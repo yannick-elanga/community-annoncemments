@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom";
 
-export default function ProtectedRoute({ children }) {
+ function ProtectedRoute({ children }) {
   const isAuthenticated = localStorage.getItem("currentUser");
   
   if (!isAuthenticated) {

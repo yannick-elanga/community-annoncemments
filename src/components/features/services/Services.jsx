@@ -152,7 +152,7 @@ ServiceCard.propTypes = {
 };
 
 // Composant principal
-export default function Services() {
+export function Services() {
   const navigate = useNavigate();
   const [activeFilter, setActiveFilter] = React.useState('all');
 
