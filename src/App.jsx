@@ -1,60 +1,46 @@
-import { Route } from "react-router-dom";
+// src/App.jsx
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { RootLayout } from "./components/layouts/root-layout";
-import { Accueil, AjouterAnnonce, AllCategoriesPage, AnnonceDetail, CategorieDetails, Categories, Communaute, ConfirmationAnnonce, Connexion, MesAnnonces, Profil, PublierAnnonce ,Services} from "./components/features";
-
+import {
+  Accueil,
+  AjouterAnnonce,
+  AllCategoriesPage,
+  AnnonceDetail,
+  CategorieDetails,
+  Categories,
+  Communaute,
+  ConfirmationAnnonce,
+  Connexion,
+  MesAnnonces,
+  Profil,
+  PublierAnnonce,
+  Services,
+} from "./components/features";
 
 export default function App() {
-  const routes = [
-    { path: "/", element: <Accueil/> },
-    { path: "/profil", element: <Profil /> },
-    {
-      path: "/ajouter-annonce",
-      element: <AjouterAnnonce />,
-    },
-    {
-      path: "/confirmation-annonce",
-      element: <ConfirmationAnnonce />,
-    },
-    {
-      path: "/connexion",
-      element: <Connexion />,
-    },
-    {
-      path: "/publier-annonce",
-      element: <PublierAnnonce />,
-    },
-    { path: "/mes-annonces", element: <MesAnnonces /> },
-    {
-      path: "/categories",
-      element: <Categories />,
-    },
-    {
-      path: "/categories/:id",
-      element: <CategorieDetails />,
-    },
-        {
-      path: "/categories-publiques",
-      element: <AllCategoriesPage />,
-    },        {
-      path: "/services",
-      element: <Services />,
-    },        {
-      path: "/annonce/:id",
-      element: <AnnonceDetail />,
-    },
-    {
-      path: "/communaute",
-      element: <Communaute />,
-    },
-  ];
   return (
-    <RootLayout>
-      {routes.map(e => (
-        <Route path={e.path} element={e.element} />
-      ))}
-    </RootLayout>
+    <Router>
+      <Routes>
+        <Route path="/" element={<RootLayout />}>
+          <Route index element={<Accueil />} />
+          <Route path="profil" element={<Profil />} />
+          <Route path="ajouter-annonce" element={<AjouterAnnonce />} />
+          <Route path="confirmation-annonce" element={<ConfirmationAnnonce />} />
+          <Route path="connexion" element={<Connexion />} />
+          <Route path="publier-annonce" element={<PublierAnnonce />} />
+          <Route path="mes-annonces" element={<MesAnnonces />} />
+          <Route path="categories" element={<Categories />} />
+          <Route path="categories/:id" element={<CategorieDetails />} />
+          <Route path="categories-publiques" element={<AllCategoriesPage />} />
+          <Route path="services" element={<Services />} />
+          <Route path="annonce/:id" element={<AnnonceDetail />} />
+          <Route path="communaute" element={<Communaute />} />
+        </Route>
+      </Routes>
+    </Router>
   );
 }
+
 
 // // import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // import Navbar from "./Navbar";

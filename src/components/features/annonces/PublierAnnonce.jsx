@@ -9,7 +9,7 @@ export function PublierAnnonce() {
   const [titre, setTitre] = useState("");
   const [prix, setPrix] = useState("");
   const [description, setDescription] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  const [imageFile, setImageFile] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,7 +28,7 @@ export function PublierAnnonce() {
       titre,
       prix,
       description,
-      imageUrl,
+      imageUrl: imageFile ? URL.createObjectURL(imageFile) : null, // URL temporaire utilisable directement
     };
 
     // Ajouter la nouvelle annonce à la liste existante
@@ -86,14 +86,13 @@ export function PublierAnnonce() {
         </div>
 
         <div className="mb-3">
-          <label htmlFor="imageUrl" className="form-label">URL de l'image</label>
+          <label htmlFor="imageFile" className="form-label">Image de l'annonce</label>
           <input
-            type="url"
-            id="imageUrl"
+            type="file"
+            id="imageFile"
             className="form-control"
-            value={imageUrl}
-            onChange={(e) => setImageUrl(e.target.value)}
-            placeholder="https://exemple.com/image.jpg (optionnel)"
+            accept="image/*"
+            onChange={(e) => setImageFile(e.target.files[0])}
           />
         </div>
 

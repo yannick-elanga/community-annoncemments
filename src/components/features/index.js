@@ -21,7 +21,9 @@ export * from "./communaute/Communaute";
 export * from "./communaute/ConfirmationAnnonce";
 
 // Export all files of Acceuil
-export * from "./profil/Profil";
+export { default as Profil } from "./profil/Profil";
+
 
 // Export all files of Acceuil
 export * from "./services/Services";
+export * from "./card/PublicAds";

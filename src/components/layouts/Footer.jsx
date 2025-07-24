@@ -1,250 +1,183 @@
-// import React from "react";
-// import { Link } from "react-router-dom";
-// import { 
-//   FaFacebook, 
-//   FaTwitter, 
-//   FaInstagram, 
-//   FaLinkedin,
-//   FaWhatsapp,
-//   FaMapMarkerAlt,
-//   FaPhone,
-//   FaEnvelope,
-//   FaClock
-// } from "react-icons/fa";
-
-// export function Footer() {
-//   const currentYear = new Date().getFullYear();
-
-//   return (
-//     <footer className="bg-dark text-light pt-5 pb-3">
-//       <div className="container">
-//         <div className="row g-4">
-//           {/* Colonne 1 - À propos */}
-//           <div className="col-lg-4 col-md-6">
-//             <div className="d-flex align-items-center mb-3">
-//               <img 
-//                 src="/logo-light.jpg" 
-//                 alt="TrouveToutCm Logo" 
-//                 width="40" 
-//                 height="40"
-//                 className="me-2"
-//               />
-//               <h4 className="mb-0 text-primary fw-bold">TrouveToutCm</h4>
-//             </div>
-//             <p className="small">
-//               La plateforme camerounaise de référence pour trouver et publier des annonces en toute simplicité.
-//             </p>
-//             <div className="social-icons mt-4">
-//               <a href="#" className="text-light me-3" aria-label="Facebook">
-//                 <FaFacebook size={20} />
-//               </a>
-//               <a href="#" className="text-light me-3" aria-label="Twitter">
-//                 <FaTwitter size={20} />
-//               </a>
-//               <a href="#" className="text-light me-3" aria-label="Instagram">
-//                 <FaInstagram size={20} />
-//               </a>
-//               <a href="#" className="text-light me-3" aria-label="LinkedIn">
-//                 <FaLinkedin size={20} />
-//               </a>
-//               <a href="#" className="text-light" aria-label="WhatsApp">
-//                 <FaWhatsapp size={20} />
-//               </a>
-//             </div>
-//           </div>
-
-//           {/* Colonne 2 - Liens rapides */}
-//           <div className="col-lg-2 col-md-6">
-//             <h5 className="text-uppercase text-primary mb-4">Navigation</h5>
-//             <ul className="list-unstyled">
-//               <li className="mb-2">
-//                 <Link to="/" className="text-light text-decoration-none hover-primary">
-//                   Accueil
-//                 </Link>
-//               </li>
-//               <li className="mb-2">
-//                 <Link to="/annonces" className="text-light text-decoration-none hover-primary">
-//                   Toutes les annonces
-//                 </Link>
-//               </li>
-//               <li className="mb-2">
-//                 <Link to="/categories" className="text-light text-decoration-none hover-primary">
-//                   Catégories
-//                 </Link>
-//               </li>
-//               <li className="mb-2">
-//                 <Link to="/recrutement" className="text-light text-decoration-none hover-primary">
-//                   Offres d'emploi
-//                 </Link>
-//               </li>
-//               <li className="mb-2">
-//                 <Link to="/blog" className="text-light text-decoration-none hover-primary">
-//                   Blog
-//                 </Link>
-//               </li>
-//             </ul>
-//           </div>
-
-//           {/* Colonne 3 - Liens utiles */}
-//           <div className="col-lg-2 col-md-6">
-//             <h5 className="text-uppercase text-primary mb-4">Utilitaires</h5>
-//             <ul className="list-unstyled">
-//               <li className="mb-2">
-//                 <Link to="/aide" className="text-light text-decoration-none hover-primary">
-//                   Centre d'aide
-//                 </Link>
-//               </li>
-//               <li className="mb-2">
-//                 <Link to="/conditions" className="text-light text-decoration-none hover-primary">
-//                   Conditions d'utilisation
-//                 </Link>
-//               </li>
-//               <li className="mb-2">
-//                 <Link to="/confidentialite" className="text-light text-decoration-none hover-primary">
-//                   Politique de confidentialité
-//                 </Link>
-//               </li>
-//               <li className="mb-2">
-//                 <Link to="/faq" className="text-light text-decoration-none hover-primary">
-//                   FAQ
-//                 </Link>
-//               </li>
-//               <li className="mb-2">
-//                 <Link to="/contact" className="text-light text-decoration-none hover-primary">
-//                   Nous contacter
-//                 </Link>
-//               </li>
-//             </ul>
-//           </div>
-
-//           {/* Colonne 4 - Contact */}
-//           <div className="col-lg-4 col-md-6">
-//             <h5 className="text-uppercase text-primary mb-4">Contactez-nous</h5>
-//             <ul className="list-unstyled">
-//               <li className="mb-3 d-flex align-items-start">
-//                 <FaMapMarkerAlt className="text-primary mt-1 me-2 flex-shrink-0" />
-//                 <span>Rue 1.234, Quartier Bastos, Yaoundé, Cameroun</span>
-//               </li>
-//               <li className="mb-3 d-flex align-items-center">
-//                 <FaPhone className="text-primary me-2 flex-shrink-0" />
-//                 <a href="tel:+237677777777" className="text-light text-decoration-none">
-//                   +237 677 77 77 77
-//                 </a>
-//               </li>
-//               <li className="mb-3 d-flex align-items-center">
-//                 <FaEnvelope className="text-primary me-2 flex-shrink-0" />
-//                 <a href="mailto:contact@trouvetoutcm.com" className="text-light text-decoration-none">
-//                   contact@trouvetoutcm.com
-//                 </a>
-//               </li>
-//               <li className="d-flex align-items-center">
-//                 <FaClock className="text-primary me-2 flex-shrink-0" />
-//                 <span>Lun-Ven: 8h-18h | Sam: 9h-13h</span>
-//               </li>
-//             </ul>
-
-//             <div className="mt-4">
-//               <h6 className="text-uppercase text-primary mb-3">Newsletter</h6>
-//               <div className="input-group">
-//                 <input 
-//                   type="email" 
-//                   className="form-control form-control-sm" 
-//                   placeholder="Votre email" 
-//                   aria-label="Email"
-//                 />
-//                 <button className="btn btn-primary btn-sm" type="button">
-//                   S'inscrire
-//                 </button>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-
-//         <hr className="my-4 border-secondary" />
-
-//         <div className="row align-items-center">
-//           <div className="col-md-6 text-center text-md-start mb-3 mb-md-0">
-//             <p className="small mb-0">
-//               &copy; {currentYear} TrouveToutCm. Tous droits réservés.
-//             </p>
-//           </div>
-//           <div className="col-md-6 text-center text-md-end">
-//             <p className="small mb-0">
-//               <a href="#" className="text-light text-decoration-none me-3">Paiements sécurisés</a>
-//               <a href="#" className="text-light text-decoration-none">Mentions légales</a>
-//             </p>
-//           </div>
-//         </div>
-//       </div>
-//     </footer>
-//   );
-// }
-
-import React from 'react';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faInstagram, faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faFacebookF, faInstagram, faTwitter, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope, faPhone, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
+
+const QUICK_LINKS = [
+  { to: "/annonces", label: "Explorer les annonces" },
+  { to: "/publier-annonce", label: "Publier une annonce" },
+  { to: "/profil", label: "Mon profil" },
+  { to: "/categories", label: "Toutes les catégories" },
+  { to: "/a-propos", label: "À propos de nous" },
+  { to: "/contact", label: "Nous contacter" },
+  { to: "/faq", label: "FAQ et Aide" },
+];
+
+const SOCIAL_LINKS = [
+  { 
+    href: "https://facebook.com", 
+    icon: faFacebookF, 
+    label: "Suivez-nous sur Facebook",
+    title: "Facebook",
+    color: "hover:text-blue-500"
+  },
+  { 
+    href: "https://instagram.com", 
+    icon: faInstagram, 
+    label: "Suivez-nous sur Instagram",
+    title: "Instagram",
+    color: "hover:text-pink-500"
+  },
+  { 
+    href: "https://twitter.com", 
+    icon: faTwitter, 
+    label: "Suivez-nous sur Twitter",
+    title: "Twitter",
+    color: "hover:text-blue-400"
+  },
+  { 
+    href: "https://linkedin.com", 
+    icon: faLinkedinIn, 
+    label: "Suivez-nous sur LinkedIn",
+    title: "LinkedIn",
+    color: "hover:text-blue-700"
+  },
+];
+
+const LEGAL_LINKS = [
+  { to: "/politique-confidentialite", label: "Politique de confidentialité" },
+  { to: "/conditions-utilisation", label: "Conditions d'utilisation" },
+];
 
 export function Footer() {
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (!newsletterEmail.trim()) return alert("Veuillez entrer une adresse email valide.");
+    alert(`Merci pour votre inscription, ${newsletterEmail} !`);
+    setNewsletterEmail('');
+  };
+
   return (
-    <footer className="bg-dark text-light pt-5 pb-3 mt-auto">
-      <Container>
-        <Row className="mb-4">
-          <Col md={4} className="mb-4 mb-md-0">
-            <h5 className="text-warning">TrouveToutCm</h5>
-            <p>Votre plateforme de confiance pour des annonces simplifiées, rapides et efficaces au Cameroun.</p>
-            <p>
-              <FontAwesomeIcon icon={faMapMarkerAlt} className="me-2 text-warning" />
-              Douala, Cameroun
+    <footer className="bg-gray-900 text-gray-200 pt-16 pb-8 mt-auto border-t border-gray-800">
+      <div className="container mx-auto px-6 sm:px-8 lg:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+
+        {/* Logo & Description */}
+        <div>
+          <Link to="/" className="inline-block mb-4 focus:outline-none focus:ring-2 focus:ring-yellow-400 rounded-md">
+            <h3 className="text-yellow-400 text-4xl font-extrabold tracking-tight">TrouveToutCm</h3>
+          </Link>
+          <p className="text-sm leading-relaxed text-gray-400">
+            Votre portail unique pour des annonces classées, rapides et fiables au Cameroun. Connectons les opportunités, simplifions la vie.
+          </p>
+          <p className="mt-4 text-xs text-gray-500 opacity-80">Trouvez. Vendez. Connectez. Partagez.</p>
+        </div>
+
+        {/* Contact */}
+        <div>
+          <h4 className="text-yellow-400 text-xl font-bold mb-5 pb-2 border-b border-gray-700">Contactez-nous</h4>
+          <address className="not-italic space-y-3 text-sm text-gray-400">
+            <p className="flex items-start">
+              <FontAwesomeIcon icon={faMapMarkerAlt} className="text-yellow-400 mr-3 mt-1" />
+              Douala, Cameroun<br />BP 255
             </p>
-            <p>
-              <FontAwesomeIcon icon={faPhone} className="me-2 text-warning" />
-              +237 6 XX XX XX XX
-            </p>
-            <p>
-              <FontAwesomeIcon icon={faEnvelope} className="me-2 text-warning" />
+            <a href="tel:+2376XXXXXXXX" className="flex items-center hover:text-yellow-400 transition-transform transform hover:translate-x-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 rounded-md">
+              <FontAwesomeIcon icon={faPhone} className="mr-3 text-yellow-400" />
+              +237 6 71592153
+            </a>
+            <a href="mailto:contact@trouvetoutcm.com" className="flex items-center hover:text-yellow-400 transition-transform transform hover:translate-x-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 rounded-md">
+              <FontAwesomeIcon icon={faEnvelope} className="mr-3 text-yellow-400" />
               contact@trouvetoutcm.com
-            </p>
-          </Col>
+            </a>
+          </address>
+        </div>
 
-          <Col md={4} className="mb-4 mb-md-0">
-            <h5 className="text-warning">Liens rapides</h5>
-            <ul className="list-unstyled">
-              <li><a href="/mes-annonces" className="text-light text-decoration-none">Voir les annonces</a></li>
-              <li><a href="/publier-annonce" className="text-light text-decoration-none">Publier une annonce</a></li>
-              <li><a href="/contact" className="text-light text-decoration-none">Nous contacter</a></li>
-              <li><a href="/a-propos" className="text-light text-decoration-none">À propos</a></li>
-              <li><a href="/faq" className="text-light text-decoration-none">FAQ</a></li>
-            </ul>
-          </Col>
+        {/* Navigation */}
+        <nav aria-label="Liens de navigation du pied de page" className="text-sm">
+          <h4 className="text-yellow-400 text-xl font-bold mb-5 pb-2 border-b border-gray-700">Navigation</h4>
+          <ul className="space-y-3">
+            {QUICK_LINKS.map(({ to, label }) => (
+              <li key={to}>
+                <Link
+                  to={to}
+                  className="inline-block hover:text-yellow-400 transition-transform transform hover:translate-x-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 rounded-md"
+                >
+                  {label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
-          <Col md={4}>
-            <h5 className="text-warning">Newsletter</h5>
-            <p>Inscrivez-vous pour recevoir les dernières annonces et actualités directement dans votre boîte mail.</p>
-            <Form>
-              <Form.Group className="mb-2" controlId="footerNewsletter">
-                <Form.Control type="email" placeholder="Votre adresse email" />
-              </Form.Group>
-              <Button variant="warning" type="submit" className="w-100">S'inscrire</Button>
-            </Form>
-          </Col>
-        </Row>
+        {/* Newsletter & Réseaux sociaux */}
+        <div>
+          <h4 className="text-yellow-400 text-xl font-bold mb-5 pb-2 border-b border-gray-700">Restez Connecté</h4>
+          <p className="mb-4 text-sm text-gray-400">
+            Inscrivez-vous pour les dernières annonces, mises à jour et offres exclusives.
+          </p>
+          <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+            <input
+              type="email"
+              placeholder="Votre adresse email"
+              aria-label="Adresse email pour la newsletter"
+              value={newsletterEmail}
+              onChange={e => setNewsletterEmail(e.target.value)}
+              className="w-full p-3 rounded-lg bg-gray-700 text-gray-100 placeholder-gray-400
+                         focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent shadow-inner"
+              required
+            />
+            <button
+              type="submit"
+              className="w-full bg-yellow-400 text-gray-900 font-bold py-3 rounded-lg
+                         hover:bg-yellow-500 transition transform hover:scale-105
+                         focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-gray-900 shadow-md"
+            >
+              S'inscrire
+            </button>
+          </form>
+          <div className="mt-8 pt-4 border-t border-gray-700 flex space-x-6">
+            {SOCIAL_LINKS.map(({ href, icon, label, title, color }) => (
+              <a
+                key={href}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                title={title}
+                className={`text-gray-400 transition-transform transform hover:scale-125 hover:rotate-3
+                            focus:outline-none focus:ring-2 focus:ring-yellow-400 rounded-full p-2 ${color}`}
+              >
+                <FontAwesomeIcon icon={icon} size="xl" />
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
 
-        <hr className="border-light" />
+      <hr className="border-gray-700 my-10" />
 
-        <Row className="align-items-center">
-          <Col md={6} className="text-center text-md-start mb-2 mb-md-0">
-            © {new Date().getFullYear()} TrouveToutCm. Tous droits réservés.
-          </Col>
-          <Col md={6} className="text-center text-md-end">
-            <a href="#" className="text-light me-3"><FontAwesomeIcon icon={faFacebook} size="lg" /></a>
-            <a href="#" className="text-light me-3"><FontAwesomeIcon icon={faInstagram} size="lg" /></a>
-            <a href="#" className="text-light me-3"><FontAwesomeIcon icon={faTwitter} size="lg" /></a>
-            <a href="#" className="text-light"><FontAwesomeIcon icon={faLinkedin} size="lg" /></a>
-          </Col>
-        </Row>
-      </Container>
+      {/* Copyright & Liens légaux */}
+      <div className="container mx-auto px-6 sm:px-8 lg:px-12 flex flex-col md:flex-row items-center justify-between text-xs text-gray-500">
+        <div className="text-center md:text-left mb-3 md:mb-0">
+          &copy; {new Date().getFullYear()} TrouveToutCm. Tous droits réservés.
+        </div>
+        <nav aria-label="Liens légaux">
+          <ul className="flex space-x-6">
+            {LEGAL_LINKS.map(({ to, label }) => (
+              <li key={to}>
+                <Link
+                  to={to}
+                  className="hover:text-yellow-400 transition focus:outline-none focus:ring-2 focus:ring-yellow-400 rounded-md"
+                >
+                  {label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
     </footer>
   );
 }

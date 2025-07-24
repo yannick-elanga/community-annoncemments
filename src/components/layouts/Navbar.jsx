@@ -55,6 +55,8 @@ export function Navbar() {
             <Link to="/communaute">👥 Communauté</Link>
             <Link to="/mes-annonces">🔍 Voir mes annonces</Link>
             <Link to="/categories-publiques">🔍 Catégories publiques</Link>
+            
+            
           </div>
         </div>
 

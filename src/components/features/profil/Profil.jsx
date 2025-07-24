@@ -25,6 +25,9 @@ export function Profil() {
     ];
   });
 
+
+  
+
   const [users, setUsers] = useState([
     {
       id: uuidv4(),
@@ -239,6 +242,7 @@ export function Profil() {
 
   if (!currentUser) {
     return (
+      
       <div className="container d-flex justify-content-center align-items-center min-vh-100">
         <div className="card shadow p-4" style={{ maxWidth: '400px', width: '100%' }}>
           <h1 className="mb-4 text-center text-primary">Connexion</h1>
@@ -628,3 +632,4 @@ export function Profil() {
     </div>
   );
 }
+export default Profil;

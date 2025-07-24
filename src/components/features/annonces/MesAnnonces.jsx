@@ -1,89 +1,77 @@
-import React, { useEffect, useState, useCallback } from "react"; // Ajout de useCallback
+import React, { useEffect, useState, useCallback } from "react";
+import { FaTrash } from "react-icons/fa";
 
 export function MesAnnonces() {
   const [annonces, setAnnonces] = useState([]);
-  const [loading, setLoading] = useState(true); // Ajout d'un état de chargement
-  const [error, setError] = useState(null); // Ajout d'un état d'erreur
+  const [loading, setLoading] = useState(true);
 
-  // Utilisation de useCallback pour mémoriser la fonction supprimerAnnonce
+  // Charger les annonces depuis localStorage
+  useEffect(() => {
+    const stored = localStorage.getItem("annonces");
+    if (stored) {
+      try {
+        setAnnonces(JSON.parse(stored));
+      } catch (e) {
+        console.error("Erreur parsing annonces :", e);
+        setAnnonces([]);
+      }
+    }
+    setLoading(false);
+  }, []);
+
+  // Supprimer une annonce
   const supprimerAnnonce = useCallback((id) => {
     if (window.confirm("Confirmez-vous la suppression de cette annonce ?")) {
-      try {
-        const newAnnonces = annonces.filter((a) => a.id !== id);
-        setAnnonces(newAnnonces);
-        localStorage.setItem("annonces", JSON.stringify(newAnnonces));
-        // Optionnel : Ajouter une notification de succès ici
-      } catch (e) {
-        console.error("Erreur lors de la suppression de l'annonce :", e);
-        setError("Impossible de supprimer l'annonce. Veuillez réessayer.");
-      }
+      const nouvellesAnnonces = annonces.filter((annonce) => annonce.id !== id);
+      setAnnonces(nouvellesAnnonces);
+      localStorage.setItem("annonces", JSON.stringify(nouvellesAnnonces));
     }
-  }, [annonces]); // Dépendance à 'annonces'
-
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem("annonces");
-      if (stored) {
-        setAnnonces(JSON.parse(stored));
-      }
-    } catch (e) {
-      console.error("Erreur lors de la récupération des annonces depuis localStorage :", e);
-      setError("Erreur lors du chargement de vos annonces.");
-    } finally {
-      setLoading(false); // Fin du chargement
-    }
-  }, []); // Le tableau de dépendances vide assure que cela ne s'exécute qu'une fois au montage
+  }, [annonces]);
 
   if (loading) {
     return (
-      <div className="container py-5 text-center">
-        <p>Chargement de vos annonces...</p>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="container py-5 text-center text-danger">
-        <p>{error}</p>
+      <div className="flex justify-center items-center h-screen">
+        <p className="text-gray-500 text-lg">Chargement des annonces...</p>
       </div>
     );
   }
 
   return (
-    <div className="container py-5">
-      <h2 className="mb-4">Mes Annonces</h2>
+    <div className="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
+      <h2 className="text-3xl font-bold text-gray-800 mb-6">Mes Annonces Publiées</h2>
 
       {annonces.length === 0 ? (
-        <p>Aucune annonce trouvée pour le moment.</p>
+        <div className="text-center text-gray-500">
+          <p>Aucune annonce n'a été publiée pour le moment.</p>
+        </div>
       ) : (
-        <div className="row">
-          {annonces.map(({ id, titre, prix, description, imageUrl }) => (
-            <div key={id} className="col-md-4 mb-4">
-              <div className="card h-100 shadow-sm"> {/* Ajout de shadow-sm pour une meilleure UI */}
-                <img
-                  src={imageUrl || "https://via.placeholder.com/400x250?text=Pas+d'image+disponible"} // Taille d'image légèrement ajustée
-                  alt={titre || "Annonce sans titre"} // Ajout d'un alt par défaut
-                  className="card-img-top"
-                  style={{ height: "200px", objectFit: "cover" }}
-                  onError={(e) => { e.target.onerror = null; e.target.src = "https://via.placeholder.com/400x250?text=Image+introuvable"; }} // Gestion des erreurs d'image
-                />
-                <div className="card-body d-flex flex-column">
-                  <h5 className="card-title text-truncate">{titre || "Titre non spécifié"}</h5> {/* Ajout de text-truncate et valeur par défaut */}
-                  <p className="text-primary fw-bold mb-2">{prix ? `${parseFloat(prix).toLocaleString('fr-FR')} €` : "Prix non précisé"}</p> {/* Formatage du prix */}
-                  {description && (
-                    <p className="card-text text-muted mb-3" style={{ maxHeight: "4.5em", overflow: "hidden", textOverflow: "ellipsis" }}> {/* max-height augmenté pour plus de texte */}
-                      {description}
-                    </p>
-                  )}
-                  <button
-                    onClick={() => supprimerAnnonce(id)}
-                    className="btn btn-danger mt-auto w-100" // Bouton pleine largeur
-                    aria-label={`Supprimer l'annonce ${titre}`} // Accessibilité
-                  >
-                    Supprimer l'annonce
-                  </button>
-                </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {annonces.map(({ id, titre, prix, description, imageUrl, categorie, location }) => (
+            <div
+              key={id}
+              className="bg-white rounded-lg shadow hover:shadow-lg transition-shadow duration-300 overflow-hidden flex flex-col"
+            >
+              <img
+                src={imageUrl || "https://via.placeholder.com/400x250?text=Aucune+image"}
+                alt={titre || "Annonce sans titre"}
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-4 flex flex-col flex-grow">
+                <span className="inline-block bg-primary text-white text-xs px-2 py-1 rounded-full mb-2">
+                  {categorie || "Sans catégorie"}
+                </span>
+                <h3 className="text-lg font-semibold text-gray-800 mb-1 line-clamp-1">{titre || "Titre non spécifié"}</h3>
+                <p className="text-primary font-bold mb-1">
+                  {prix ? `${parseFloat(prix).toLocaleString()} €` : "Prix non précisé"}
+                </p>
+                <p className="text-gray-600 text-sm mb-2 line-clamp-2">{description || "Aucune description fournie."}</p>
+                <p className="text-gray-400 text-xs mb-3">{location || "Lieu non spécifié"}</p>
+                <button
+                  onClick={() => supprimerAnnonce(id)}
+                  className="mt-auto bg-red-500 hover:bg-red-600 text-white text-sm px-3 py-2 rounded flex items-center justify-center transition-colors duration-200"
+                >
+                  <FaTrash className="mr-2" /> Supprimer l'annonce
+                </button>
               </div>
             </div>
           ))}
