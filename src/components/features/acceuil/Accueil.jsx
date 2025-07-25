@@ -13,6 +13,8 @@ import image10 from "/assets/image10.jpg";
 /*import StateCard from "./component/state-card";*/
 import StateCategories from "./component/state-categories";
 import LatestAds from "./component/latest-ads";
+import Features from "./component/Features";
+import Partners from "./component/Partners";
 
 import {
   Container,
@@ -45,6 +47,8 @@ import {
   faQuoteLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import StateCard from "./component/state-card";
+import TestimonialsCarousel from "./component/TestimonialCarousel";
+import { i } from "framer-motion/client";
 
 export function Accueil() {
   const categories = [
@@ -294,26 +298,7 @@ export function Accueil() {
           <h2 className="text-center mb-5">Pourquoi choisir TrouveToutCm ?</h2>
           <Row>
             {features.map((feature) => (
-              <Col lg={3} md={6} key={feature.id} className="mb-4">
-                <Card className="h-100 border-0 bg-white shadow-sm">
-                  <Card.Body className="text-center p-4">
-                    <div
-                      className="icon-square bg-primary bg-opacity-10 text-primary rounded-circle mb-4 mx-auto"
-                      style={{
-                        width: "80px",
-                        height: "80px",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <FontAwesomeIcon icon={feature.icon} size="2x" />
-                    </div>
-                    <Card.Title>{feature.title}</Card.Title>
-                    <Card.Text>{feature.description}</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
+              <Features key={feature.id} feature={feature} />
             ))}
           </Row>
         </Container>
@@ -323,49 +308,7 @@ export function Accueil() {
       <section className="py-5">
         <Container>
           <h2 className="text-center mb-5">Ce que disent nos utilisateurs</h2>
-          <Carousel variant="dark" indicators={false} interval={5000}>
-            {testimonials.map((testimonial) => (
-              <Carousel.Item key={testimonial.id}>
-                <Row className="justify-content-center text-center">
-                  <Col md={8}>
-                    <blockquote className="blockquote">
-                      <p className="mb-4 fst-italic">
-                        <FontAwesomeIcon
-                          icon={faQuoteLeft}
-                          className="me-2 text-primary"
-                        />
-                        {testimonial.quote}
-                      </p>
-                      <footer className="blockquote-footer d-flex align-items-center justify-content-center gap-3">
-                        <img
-                          src={testimonial.image}
-                          alt={testimonial.author}
-                          className="rounded-circle"
-                          width={60}
-                          height={60}
-                          style={{ objectFit: "cover" }}
-                        />
-                        <div>
-                          <cite title={testimonial.author} className="fw-bold">
-                            {testimonial.author}
-                          </cite>
-                          <br />
-                          <small className="text-muted">
-                            {testimonial.role}
-                          </small>
-                          <div className="mt-1 text-warning">
-                            {[...Array(testimonial.rating)].map((_, i) => (
-                              <FontAwesomeIcon icon={faStar} key={i} />
-                            ))}
-                          </div>
-                        </div>
-                      </footer>
-                    </blockquote>
-                  </Col>
-                </Row>
-              </Carousel.Item>
-            ))}
-          </Carousel>
+          <TestimonialsCarousel testimonials={testimonials} />
         </Container>
       </section>
 
@@ -375,19 +318,7 @@ export function Accueil() {
           <h2 className="text-center mb-5">Nos partenaires</h2>
           <Row className="justify-content-center align-items-center gy-4">
             {partners.map((partner) => (
-              <Col
-                key={partner.id}
-                xs={6}
-                sm={4}
-                md={2}
-                className="d-flex justify-content-center"
-              >
-                <img
-                  src={partner.logo}
-                  alt={partner.name}
-                  style={{ maxHeight: "60px", objectFit: "contain" }}
-                />
-              </Col>
+              <Partners key={partner.id} partner={partner} />
             ))}
           </Row>
         </Container>
