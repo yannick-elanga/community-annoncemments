@@ -3,7 +3,7 @@ const cors = require("cors");
 const app = express();
 const port = 3001;
 const connection = require("./db");
-
+/*
 const userData = [
   {
     id: Math.random().toString(36).substring(2, 9),
@@ -133,23 +133,29 @@ const userData = [
     payments: [],
     // REMOVED: categories property from user object
   },
-];
-try {
-  const [results, fields] = await connection.query(
-    'SELECT * FROM `table` WHERE `name` = "Page" AND `age` > 45'
-  );
+];*/
 
-  console.log(results); // results contains rows returned by server
-  console.log(fields); // fields contains extra meta data about results, if available
-} catch (err) {
-  console.log(err);
-}
+let userData;
+(async () => {
+  try {
+    const [results, fields] = await connection.query("SELECT * FROM `users`");
+    userData = results;
+    console.log(results); // results contains rows returned by server
+    console.log(fields); // fields contains extra meta data about results, if available
+  } catch (err) {
+    console.log(err);
+  }
+})();
 
 const corsOptions = {
   origin: "http://localhost:3000",
   optionsSuccessStatus: 200, // some legacy browsers choke on 204
 };
-app.use(cors(corsOptions));
+app.use(cors());
+
+// Use express.static middleware to serve static files from the "public" folder
+app.use("/assets", express.static("assets"));
+
 app.get("/users", (req, res) => {
   res.json(userData);
 });
