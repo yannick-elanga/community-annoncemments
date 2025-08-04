@@ -36,6 +36,7 @@ export function Profil() {
       const data = await fetch("http://localhost:3001/users").then((res) =>
         res.json()
       );
+      console.log(data);
       setUsers(data);
     }
     fetchData();
